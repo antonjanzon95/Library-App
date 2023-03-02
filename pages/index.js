@@ -1,12 +1,14 @@
 import Head from "next/head";
-import Image from "next/image";
+import { bookList } from "./api/books";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
-import RentForm from "./RentForm";
+import RentForm from "./components/RentForm";
+import Heading from "./components/Heading";
+import DataFetcher from "./components/DataFetcher";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home() {
+export default function Home({ results }) {
   return (
     <>
       <Head>
@@ -15,8 +17,10 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="bg-slate-200 text-slate-900 flex justify-center items-center min-h-screen">
+      <main className="bg-slate-200 text-slate-900 flex flex-col justify-center items-center min-h-screen">
+        <Heading title="Welcome to the library!" />
         <RentForm />
+        <DataFetcher bookList={bookList} />
       </main>
     </>
   );
