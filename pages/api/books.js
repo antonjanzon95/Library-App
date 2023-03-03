@@ -1,5 +1,15 @@
-export const bookList = [
-  { id: 1, name: "Lord of the Rings" },
-  { id: 2, name: "Lord of the Flies" },
-  { id: 3, name: "Harry Potter and the Goblet of Fire" },
-];
+export let availableBooks = [];
+
+export let rentedBooks = [];
+
+export const rentBook = (bookToRent) => {
+  availableBooks = availableBooks.filter(
+    (book) => book.name !== bookToRent.name
+  );
+  rentedBooks.push(bookToRent);
+};
+
+export const returnBook = (bookToReturn) => {
+  rentedBooks = rentedBooks.filter((book) => book.name !== bookToReturn.name);
+  availableBooks.push(bookToReturn);
+};
