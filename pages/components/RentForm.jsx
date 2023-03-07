@@ -9,7 +9,7 @@ const RentForm = () => {
 
     const book = { name: bookName, author: authorName };
     try {
-      const response = await fetch("../api/addBook", {
+      const response = await fetch("/api/books?path=add-book", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -17,7 +17,6 @@ const RentForm = () => {
         body: JSON.stringify(book),
       });
       const data = await response.json();
-      console.log(data);
       setBookName("");
       setAuthorName("");
     } catch (error) {
