@@ -17,15 +17,15 @@ const AvailableBooks = () => {
       }
     };
     fetchBooks();
-  }, []);
+  }, [availableBooks]);
 
   return (
     <>
-      <section className="bg-slate-900 text-slate-100 flex flex-col justify-center items-center min-h-screen gap-20">
+      <Navigation />
+      <section className="bg-slate-900 text-slate-100 flex flex-col items-center min-h-screen gap-20">
         <Heading title={"Available books:"} />
-        <div className="flex flex-col gap-6">
-          <Navigation />
-          <BooksRenderer books={availableBooks} isReturnButtonDisabled={true} />
+        <div className="flex flex-col gap-6 min-w-[500px]">
+          <BooksRenderer books={availableBooks} />
         </div>
       </section>
     </>

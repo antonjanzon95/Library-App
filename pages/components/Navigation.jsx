@@ -4,8 +4,8 @@ import Link from "next/link";
 const Navigation = () => {
   return (
     <>
-      <nav className="min-w-screen flex justify-center items-center text-3xl text-teal-600 font-semibold">
-        <ul className="flex gap-10">
+      <nav className="w-screen flex justify-center items-center text-3xl text-teal-600 font-semibold h-20 bg-slate-900">
+        <ul className="flex gap-10 mx-auto">
           <li className="hover:text-blue-600">
             <Link href="/">Home</Link>
           </li>

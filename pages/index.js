@@ -15,12 +15,10 @@ export default function Home({ results }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="bg-slate-900 text-slate-100 flex flex-col justify-center items-center min-h-screen gap-20">
+      <Navigation />
+      <main className="bg-slate-900 text-slate-100 flex flex-col items-center min-h-screen">
         <Heading title={"Welcome to the library!"} />
-        <div>
-          <Navigation />
-          <RentForm />
-        </div>
+        <RentForm />
       </main>
     </>
   );
