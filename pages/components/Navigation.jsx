@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import Link from "next/link";
 
 const Navigation = () => {
-  // const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  // const handleLogin = () => {
-  //   setIsLoggedIn(false);
-  // };
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+  };
 
   return (
     <>
@@ -23,10 +23,7 @@ const Navigation = () => {
           </li>
           {isLoggedIn ? (
             <li className="hover:text-blue-600 absolute top-6 right-6">
-              <Link
-                href="/Logout"
-                // onClick={() => handleLogin()}
-              >
+              <Link href="/" onClick={() => handleLogout()}>
                 Logout
               </Link>
             </li>

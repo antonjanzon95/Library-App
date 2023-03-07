@@ -41,7 +41,7 @@ export default function handler(req, res) {
         writeData(data);
         res.status(200).json({ success: true, message: "Book added" });
       } else if (method === "GET") {
-        res.status(200).json(availableBooks);
+        res.status(200).json(data.availableBooks);
       } else {
         res.status(405).json({ success: false, message: "Error adding book" });
       }
