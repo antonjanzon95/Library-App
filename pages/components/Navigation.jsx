@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 
 const Navigation = () => {
+  // const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  // const handleLogin = () => {
+  //   setIsLoggedIn(false);
+  // };
+
   return (
     <>
       <nav className="w-screen flex justify-center items-center text-3xl text-teal-600 font-semibold h-20 bg-slate-900">
@@ -15,6 +21,20 @@ const Navigation = () => {
           <li className="hover:text-blue-600">
             <Link href="/RentedBooks">Rented books</Link>
           </li>
+          {isLoggedIn ? (
+            <li className="hover:text-blue-600 absolute top-6 right-6">
+              <Link
+                href="/Logout"
+                // onClick={() => handleLogin()}
+              >
+                Logout
+              </Link>
+            </li>
+          ) : (
+            <li className="hover:text-blue-600 absolute top-6 right-6">
+              <Link href="/Login">Login</Link>
+            </li>
+          )}
         </ul>
       </nav>
     </>
