@@ -1,15 +1,32 @@
 import { v4 as uuidv4 } from "uuid";
+import fs from "fs";
+import path from "path";
 
-export let availableBooks = [
-  { id: uuidv4(), name: "Harry Potter", author: "J.K. Rowling" },
-];
+const dataFilePath = path.join(process.cwd(), "data", "books.json");
 
-export let rentedBooks = [
-  { id: uuidv4(), name: "Harry Potter 2", author: "J.K. Rowling" },
-];
+const readData = () => {
+  try {
+    const fileContent = fs.readFileSync(dataFilePath, "utf-8");
+    return JSON.parse(fileContent);
+  } catch (error) {
+    console.error("Error reading data file", error);
+    return null;
+  }
+};
+
+const writeData = (data) => {
+  try {
+    const jsonData = JSON.stringify(data, null, 2);
+    fs.writeFileSync(dataFilePath, jsonData, "utf-8");
+  } catch (error) {
+    console.error("Error writing data file", error);
+  }
+};
 
 export default function handler(req, res) {
   const { method, body } = req;
+
+  const data = readData() || { availableBooks: [], rentedBooks: [] };
 
   switch (req.query.path) {
     case "add-book":
@@ -20,7 +37,8 @@ export default function handler(req, res) {
           name: name,
           author: author,
         };
-        availableBooks.push(newBook);
+        data.availableBooks.push(newBook);
+        writeData(data);
         res.status(200).json({ success: true, message: "Book added" });
       } else if (method === "GET") {
         res.status(200).json(availableBooks);
@@ -32,11 +50,14 @@ export default function handler(req, res) {
     case "rent-book":
       if (method === "POST") {
         const bookToRent = body;
-        availableBooks = availableBooks.filter((book) => book.id !== body.id);
-        rentedBooks.push(bookToRent);
+        data.availableBooks = data.availableBooks.filter(
+          (book) => book.id !== body.id
+        );
+        data.rentedBooks.push(bookToRent);
+        writeData(data);
         res.status(200).json({ success: true, message: "Book rented" });
       } else if (method === "GET") {
-        res.status(200).json(rentedBooks);
+        res.status(200).json(data.rentedBooks);
       } else {
         res.status(405).json({ success: false, message: "Error renting book" });
       }
@@ -45,11 +66,14 @@ export default function handler(req, res) {
     case "return-book":
       if (method === "POST") {
         const bookToReturn = body;
-        rentedBooks = rentedBooks.filter((book) => book.id !== body.id);
-        availableBooks.push(bookToReturn);
+        data.rentedBooks = data.rentedBooks.filter(
+          (book) => book.id !== body.id
+        );
+        data.availableBooks.push(bookToReturn);
+        writeData(data);
         res.status(200).json({ success: true, message: "Book returned" });
       } else if (method === "GET") {
-        res.status(200).json(availableBooks);
+        res.status(200).json(data.availableBooks);
       } else {
         res
           .status(405)

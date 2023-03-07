@@ -1,0 +1,16 @@
+{
+  "availableBooks": [
+    {
+      "id": "1ee8c0cc-f3df-48c1-83aa-8dab59e7d632",
+      "name": "Harry Potter and the Philosopher's Stone",
+      "author": "J. K. Rowling"
+    }
+  ],
+  "rentedBooks": [
+    {
+      "id": "ab44a383-cb89-47e7-8d20-497eb68b663f",
+      "name": "Harry Potter and the Chamber of Secrets",
+      "author": "J. K. Rowling"
+    }
+  ]
+}
