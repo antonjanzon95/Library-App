@@ -2,9 +2,9 @@ import { v4 as uuidv4 } from "uuid";
 import fs from "fs";
 import path from "path";
 
-const dataFilePath = path.join(process.cwd(), "data", "books.json");
+export const dataFilePath = path.join(process.cwd(), "data", "books.json");
 
-const readData = () => {
+export const readData = () => {
   try {
     const fileContent = fs.readFileSync(dataFilePath, "utf-8");
     return JSON.parse(fileContent);
@@ -14,7 +14,7 @@ const readData = () => {
   }
 };
 
-const writeData = (data) => {
+export const writeData = (data) => {
   try {
     const jsonData = JSON.stringify(data, null, 2);
     fs.writeFileSync(dataFilePath, jsonData, "utf-8");
@@ -31,11 +31,12 @@ export default function handler(req, res) {
   switch (req.query.path) {
     case "add-book":
       if (method === "POST") {
-        const { name, author } = body;
+        const { name, author, pages } = body;
         const newBook = {
           id: uuidv4(),
           name: name,
           author: author,
+          pages: pages,
         };
         data.availableBooks.push(newBook);
         writeData(data);
@@ -44,6 +45,12 @@ export default function handler(req, res) {
         res.status(200).json(data.availableBooks);
       } else {
         res.status(405).json({ success: false, message: "Error adding book" });
+      }
+      break;
+
+    case "get-books":
+      if (method === "GET") {
+        res.status(200).json(data.availableBooks);
       }
       break;
 

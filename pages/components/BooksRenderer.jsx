@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 
 const BooksRenderer = ({ books, isRentButtonDisabled }) => {
+  const [pages, setPages] = useState("");
+  const [showPagesForBook, setShowPagesForBook] = useState(null);
+
   const rentBook = async (bookToRent) => {
     try {
       const response = await fetch("/api/books?path=rent-book", {
@@ -33,6 +36,17 @@ const BooksRenderer = ({ books, isRentButtonDisabled }) => {
     }
   };
 
+  const toggleShowPages = async (book) => {
+    try {
+      const response = await fetch(`/api/books/${book.id}`);
+      const data = await response.json();
+      setPages(data.pages);
+      setShowPagesForBook(book.id);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   if (books.length > 0) {
     return (
       <ul className="flex flex-col gap-8 bg-slate-800 px-6 py-4">
@@ -40,8 +54,12 @@ const BooksRenderer = ({ books, isRentButtonDisabled }) => {
           return (
             <li key={book.id} className="flex justify-between">
               <div>
-                <span className="text-xl">{book.name}</span> - {book.author}
+                <button onClick={() => toggleShowPages(book)}>
+                  <span className="text-xl">{book.name}</span> - {book.author}
+                </button>
+                {showPagesForBook === book.id && <p> {pages} pages</p>}
               </div>
+
               <div className="font-bold">
                 {isRentButtonDisabled ? (
                   <button className="ml-6" onClick={() => returnBook(book)}>

@@ -3,11 +3,13 @@ import React, { useState } from "react";
 const RentForm = () => {
   const [bookName, setBookName] = useState("");
   const [authorName, setAuthorName] = useState("");
+  const [pagesAmount, setPagesAmount] = useState("");
+  const [addedMessage, setAddedMessage] = useState(null);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const book = { name: bookName, author: authorName };
+    const book = { name: bookName, author: authorName, pages: pagesAmount };
     try {
       const response = await fetch("/api/books?path=add-book", {
         method: "POST",
@@ -19,6 +21,8 @@ const RentForm = () => {
       const data = await response.json();
       setBookName("");
       setAuthorName("");
+      setPagesAmount("");
+      setAddedMessage("Book added to library!");
     } catch (error) {
       console.error(error);
     }
@@ -53,6 +57,19 @@ const RentForm = () => {
                 required
               />
             </label>
+            <label className="flex justify-between">
+              Pages amount:
+              <input
+                type="text"
+                className="bg-slate-900"
+                value={pagesAmount}
+                onChange={(event) => setPagesAmount(event.target.value)}
+                required
+              />
+            </label>
+            <p className="text-center font-bold m-4">
+              {addedMessage && addedMessage}
+            </p>
           </div>
           <button id="bookBtn" type="submit" className="p-3 bg-teal-700 w-1/2">
             Add Book

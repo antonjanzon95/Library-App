@@ -9,7 +9,7 @@ const AvailableBooks = () => {
   useEffect(() => {
     const fetchBooks = async () => {
       try {
-        const response = await fetch("/api/books?path=return-book");
+        const response = await fetch("/api/books?path=get-books");
         const data = await response.json();
         setAvailableBooks(data);
       } catch (error) {
