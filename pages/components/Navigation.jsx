@@ -2,16 +2,14 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 
 const Navigation = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(true);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
-    const menuState = localStorage.getItem("isMenuOpen");
-    setIsMenuOpen(menuState === "true");
+    setIsMenuOpen(false);
   }, []);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
-    localStorage.setItem("isMenuOpen", !isMenuOpen);
   };
 
   return (
