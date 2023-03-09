@@ -32,7 +32,11 @@ const AvailableBooks = () => {
         />
         <Heading title={"Available books:"} />
         <div className="flex flex-col gap-6 laptop:w-[500px]">
-          <BooksRenderer books={availableBooks} />
+          {availableBooks.length > 0 ? (
+            <BooksRenderer books={availableBooks} />
+          ) : (
+            <p>Loading...</p>
+          )}
         </div>
       </section>
     </>

@@ -32,7 +32,11 @@ const RentedBooks = () => {
         />
         <Heading title={"Rented books:"} />
         <div className="flex flex-col gap-6 laptop:w-[500px]">
-          <BooksRenderer books={rentedBooks} isRentButtonDisabled={true} />
+          {rentedBooks.length > 0 ? (
+            <BooksRenderer books={availableBooks} isRentButtonDisabled={true} />
+          ) : (
+            <p>Loading...</p>
+          )}
         </div>
       </section>
     </>
