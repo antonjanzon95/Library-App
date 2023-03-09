@@ -43,7 +43,7 @@ const RentForm = () => {
               Title:
               <input
                 type="text"
-                className="bg-slate-100 rounded "
+                className="bg-slate-100 rounded text-black"
                 value={bookName}
                 onChange={(event) => setBookName(event.target.value)}
                 required
@@ -53,7 +53,7 @@ const RentForm = () => {
               Author:
               <input
                 type="text"
-                className="bg-slate-100 rounded "
+                className="bg-slate-100 rounded text-black"
                 value={authorName}
                 onChange={(event) => setAuthorName(event.target.value)}
                 required
@@ -63,7 +63,7 @@ const RentForm = () => {
               Pages amount:
               <input
                 type="text"
-                className="bg-slate-100 rounded "
+                className="bg-slate-100 rounded text-black"
                 value={pagesAmount}
                 onChange={(event) => setPagesAmount(event.target.value)}
                 required

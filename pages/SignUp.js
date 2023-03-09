@@ -56,7 +56,7 @@ const SignUp = () => {
               Username:
               <input
                 type="text"
-                className="bg-slate-100 rounded"
+                className="bg-slate-100 rounded text-black"
                 value={username}
                 onChange={(event) => setUsername(event.target.value)}
                 required
@@ -66,7 +66,7 @@ const SignUp = () => {
               Password:
               <input
                 type="password"
-                className="bg-slate-100 rounded"
+                className="bg-slate-100 rounded text-black"
                 value={password}
                 onChange={(event) => setPassword(event.target.value)}
                 required
@@ -76,7 +76,7 @@ const SignUp = () => {
               Confirm Password:
               <input
                 type="password"
-                className="bg-slate-100 rounded"
+                className="bg-slate-100 rounded text-black"
                 value={confirmPassword}
                 onChange={(event) => setConfirmPassword(event.target.value)}
                 required

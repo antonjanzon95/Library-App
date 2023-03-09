@@ -59,7 +59,7 @@ const Login = () => {
               Username:
               <input
                 type="text"
-                className="bg-slate-100 rounded"
+                className="bg-slate-100 rounded text-black"
                 value={username}
                 onChange={(event) => setUsername(event.target.value)}
                 required
@@ -69,7 +69,7 @@ const Login = () => {
               Password:
               <input
                 type="password"
-                className="bg-slate-100 rounded"
+                className="bg-slate-100 rounded text-black"
                 value={password}
                 onChange={(event) => setPassword(event.target.value)}
                 required
