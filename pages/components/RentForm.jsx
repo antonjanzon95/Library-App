@@ -33,35 +33,37 @@ const RentForm = () => {
       <div className="flex justify-center py-10">
         <form
           onSubmit={handleSubmit}
-          className="flex flex-col justify-center items-center gap-4 bg-slate-800 p-12"
+          className="flex flex-col justify-center items-center gap-4"
         >
-          <div className="flex flex-col gap-2">
-            Would you like to add a book to the library?
-            <label className="flex justify-between">
+          <div className="flex flex-col gap-2 text-xl justify-center items-center">
+            <h2 className="text-center">
+              Would you like to add a book to the library?
+            </h2>
+            <label className="flex flex-col">
               Title:
               <input
                 type="text"
-                className="bg-slate-900"
+                className="bg-slate-100 rounded "
                 value={bookName}
                 onChange={(event) => setBookName(event.target.value)}
                 required
               />
             </label>
-            <label className="flex justify-between">
+            <label className="flex flex-col">
               Author:
               <input
                 type="text"
-                className="bg-slate-900"
+                className="bg-slate-100 rounded "
                 value={authorName}
                 onChange={(event) => setAuthorName(event.target.value)}
                 required
               />
             </label>
-            <label className="flex justify-between">
+            <label className="flex flex-col">
               Pages amount:
               <input
                 type="text"
-                className="bg-slate-900"
+                className="bg-slate-100 rounded "
                 value={pagesAmount}
                 onChange={(event) => setPagesAmount(event.target.value)}
                 required
@@ -71,7 +73,11 @@ const RentForm = () => {
               {addedMessage && addedMessage}
             </p>
           </div>
-          <button id="bookBtn" type="submit" className="p-3 bg-teal-700 w-1/2">
+          <button
+            id="bookBtn"
+            type="submit"
+            className="p-3 border-2 w-1/2 bg-black bg-opacity-60 hover:bg-slate-100 hover:text-black font-extrabold"
+          >
             Add Book
           </button>
         </form>

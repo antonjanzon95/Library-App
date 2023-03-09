@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import RentForm from "./components/RentForm";
 import Heading from "./components/Heading";
 import Navigation from "./components/Navigation";
+import Image from "next/image";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +17,14 @@ export default function Home({ results }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navigation />
-      <main className="bg-slate-900 text-slate-100 flex flex-col items-center min-h-screen">
+
+      <main className="bg-black bg-opacity-80 text-slate-100 flex flex-col items-center h-screen mt-[-80px] pt-20">
+        <Image
+          src="/books-gb2bee1400_1920.jpg"
+          alt="Library"
+          fill
+          className="bg-cover z-[-1]"
+        />
         <Heading title={"Welcome to the library!"} />
         <RentForm />
       </main>
