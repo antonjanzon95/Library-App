@@ -58,14 +58,10 @@ const Navigation = () => {
         </ul>
         <ul className="flex gap-4">
           <li className="hover:text-blue-600">
-            <Link onClick={toggleMenu} href="/SignUp">
-              Sign Up
-            </Link>
+            <Link href="/SignUp">Sign Up</Link>
           </li>
           <li className="hover:text-blue-600">
-            <Link onClick={toggleMenu} href="/Login">
-              Login
-            </Link>
+            <Link href="/Login">Login</Link>
           </li>
         </ul>
       </nav>

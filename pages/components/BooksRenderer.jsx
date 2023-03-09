@@ -49,24 +49,31 @@ const BooksRenderer = ({ books, isRentButtonDisabled }) => {
 
   if (books.length > 0) {
     return (
-      <ul className="flex flex-col gap-8 bg-slate-800 px-6 py-4">
+      <ul className="flex flex-col gap-8 bg-black bg-opacity-60 px-6 py-4">
         {books.map((book) => {
           return (
             <li key={book.id} className="flex justify-between">
               <div>
                 <button onClick={() => toggleShowPages(book)}>
-                  <span className="text-xl">{book.name}</span> - {book.author}
+                  <span className="text-xl">{book.name}</span> <br />{" "}
+                  {book.author}
                 </button>
                 {showPagesForBook === book.id && <p> {pages} pages</p>}
               </div>
 
-              <div className="font-bold">
+              <div className="font-bold flex items-center justify-center">
                 {isRentButtonDisabled ? (
-                  <button className="ml-6" onClick={() => returnBook(book)}>
+                  <button
+                    className="ml-6 border-2 border-white p-3 bg-black bg-opacity-80 hover:bg-slate-100 hover:text-black"
+                    onClick={() => returnBook(book)}
+                  >
                     Return
                   </button>
                 ) : (
-                  <button className="ml-6" onClick={() => rentBook(book)}>
+                  <button
+                    className="ml-6 border-2 border-white p-3 bg-black bg-opacity-80 hover:bg-slate-100 hover:text-black"
+                    onClick={() => rentBook(book)}
+                  >
                     Rent
                   </button>
                 )}
