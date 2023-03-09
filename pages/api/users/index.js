@@ -1,5 +1,6 @@
 import fs from "fs";
 import path from "path";
+import CryptoJS from "crypto-js";
 
 const dataFilePath = path.join(process.cwd(), "data", "users.json");
 
@@ -31,14 +32,19 @@ export default function handler(req, res) {
     case "add-user":
       if (method === "POST") {
         const { username, password } = body;
+        const encryptedPassword = CryptoJS.AES.encrypt(
+          password,
+          "test key"
+        ).toString();
         const newUser = {
           username: username,
-          password: password,
+          password: encryptedPassword,
         };
+
         const checkUsername = data.users.find(
           (user) => user.username === newUser.username
         );
-        console.log(checkUsername);
+
         if (checkUsername) {
           res
             .status(409)

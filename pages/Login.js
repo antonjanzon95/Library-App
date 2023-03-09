@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Navigation from "./components/Navigation";
 import Heading from "./components/Heading";
+import CryptoJS from "crypto-js";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -13,11 +14,17 @@ const Login = () => {
     try {
       const response = await fetch("/api/users?path=get-users");
       const data = await response.json();
-      const checkUserExists = data.find(
-        (userData) =>
+
+      const checkUserExists = data.find((userData) => {
+        const decryptedPassword = CryptoJS.AES.decrypt(
+          userData.password,
+          "test key"
+        ).toString(CryptoJS.enc.Utf8);
+        return (
           userData.username === user.username &&
-          userData.password === user.password
-      );
+          decryptedPassword === user.password
+        );
+      });
       if (checkUserExists) {
         alert("You have been logged in!");
         setUsername("");
