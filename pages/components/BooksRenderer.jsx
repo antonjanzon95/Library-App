@@ -49,10 +49,13 @@ const BooksRenderer = ({ books, isRentButtonDisabled }) => {
 
   if (books.length > 0) {
     return (
-      <ul className="flex flex-col gap-8 bg-black bg-opacity-60 px-6 py-4">
+      <ul className="flex flex-col gap-8 px-6 py-4">
         {books.map((book) => {
           return (
-            <li key={book.id} className="flex justify-between">
+            <li
+              key={book.id}
+              className="flex justify-between bg-black bg-opacity-60 p-2 min-w-[325px]"
+            >
               <div>
                 <button onClick={() => toggleShowPages(book)}>
                   <span className="text-xl">{book.name}</span> <br />{" "}

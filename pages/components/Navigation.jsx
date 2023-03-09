@@ -17,7 +17,7 @@ const Navigation = () => {
       <nav className="max-w-screen flex justify-between items-center text-xl text-slate-100 font-semibold h-20 bg-black bg-opacity-60 p-6">
         <button
           onClick={toggleMenu}
-          className={`z-10 w-10 h-8 flex flex-col justify-between`}
+          className={`z-10 w-10 h-8 flex flex-col justify-between laptop:hidden`}
         >
           <div
             className={`${
@@ -38,7 +38,7 @@ const Navigation = () => {
         <ul
           className={`${
             isMenuOpen ? "scale-100" : "scale-0"
-          } absolute left-0 top-0 bg-black opacity-90 w-screen h-screen laptop:bg-inherit text-slate-100 laptop:p-0 laptop:mt-0 shadow-xl transition duration-300 ease-in-out laptop:relative flex flex-col justify-center items-center laptop:flex-row gap-10`}
+          } absolute left-0 top-0 bg-black w-screen h-screen laptop:h-full laptop:w-full laptop:pl-[180px] laptop:bg-opacity-0 text-slate-100 laptop:p-0 laptop:mt-0 text-4xl laptop:text-2xl laptop:scale-100 transition duration-300 ease-in-out laptop:static flex flex-col justify-center items-center laptop:flex-row gap-20 laptop:gap-10`}
         >
           <li className="hover:text-blue-600">
             <Link onClick={toggleMenu} href="/">
@@ -56,9 +56,9 @@ const Navigation = () => {
             </Link>
           </li>
         </ul>
-        <ul className="flex gap-4">
+        <ul className="flex gap-6 laptop:gap-0 laptop:justify-between laptop:w-[180px]">
           <li className="hover:text-blue-600">
-            <Link href="/SignUp">Sign Up</Link>
+            <Link href="/SignUp">Sign up</Link>
           </li>
           <li className="hover:text-blue-600">
             <Link href="/Login">Login</Link>

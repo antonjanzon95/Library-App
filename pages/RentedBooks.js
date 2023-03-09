@@ -31,8 +31,8 @@ const RentedBooks = () => {
           className="bg-cover z-[-1]"
         />
         <Heading title={"Rented books:"} />
-        <div className="flex flex-col gap-6 p-6 laptop:w-[500px]">
-          <BooksRenderer books={rentedBooks} />
+        <div className="flex flex-col gap-6 laptop:w-[500px]">
+          <BooksRenderer books={rentedBooks} isRentButtonDisabled={true} />
         </div>
       </section>
     </>
