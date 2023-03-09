@@ -13,12 +13,5 @@
       "pages": "251"
     }
   ],
-  "rentedBooks": [
-    {
-      "id": "4993b7b9-6b06-40a5-a556-b2e51567a34f",
-      "name": "Antons bok",
-      "author": "Anton",
-      "pages": "123"
-    }
-  ]
+  "rentedBooks": []
 }

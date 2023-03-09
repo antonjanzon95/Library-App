@@ -36,7 +36,7 @@ const RentForm = () => {
           className="flex flex-col justify-center items-center gap-4"
         >
           <div className="flex flex-col gap-2 text-xl justify-center items-center">
-            <h2 className="text-center">
+            <h2 className="text-center mb-4">
               Would you like to add a book to the library?
             </h2>
             <label className="flex flex-col">
