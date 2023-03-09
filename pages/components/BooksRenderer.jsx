@@ -49,7 +49,7 @@ const BooksRenderer = ({ books, isRentButtonDisabled }) => {
 
   return (
     <>
-      {books.length > 0 ? (
+      {/* {books.length > 0 ? (
         <ul className="flex flex-col gap-8 px-6 py-4">
           {books.map((book) => {
             return (
@@ -89,9 +89,9 @@ const BooksRenderer = ({ books, isRentButtonDisabled }) => {
             );
           })}
         </ul>
-      ) : (
-        <p className="text-center mt-10 text-xl">No books...</p>
-      )}
+      ) : ( */}
+      <p className="text-center mt-10 text-xl">No books...</p>
+      {/* } */}
     </>
   );
 };
